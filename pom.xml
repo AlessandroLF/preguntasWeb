@@ -3,7 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sandro</groupId>
   <artifactId>preguntasweb</artifactId>
-  <packaging>war</packaging>
   <version>1.0</version>
   <name>preguntasWeb</name>
   <url>http://maven.apache.org</url>
