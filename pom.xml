@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sandro</groupId>
-  <artifactId>preguntasweb</artifactId>
+  <artifactId>preguntasWeb</artifactId>
   <version>1.0</version>
   <name>preguntasWeb</name>
   <url>http://maven.apache.org</url>
@@ -75,6 +75,6 @@
 			</executions>
 		</plugin>
     </plugins>
-    <finalName>HashtagWeb</finalName>
+    <finalName>preguntasWeb</finalName>
   </build>
 </project>
