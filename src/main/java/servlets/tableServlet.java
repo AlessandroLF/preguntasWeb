@@ -6,11 +6,12 @@
 package servlets;
 
 import db.DatabaseQ;
-import db.Pregunta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lomba
  */
-public class getServlet extends HttpServlet {
+public class tableServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,18 +32,15 @@ public class getServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try{
-            DatabaseQ db = DatabaseQ.getInstance();
-            ArrayList<Pregunta> preguntas = (ArrayList<Pregunta>) db.getPreguntas();
-            for(Pregunta p: preguntas){
-                out.print("Q: " + p.getTexto());
-                out.print("-----------------------------");
-            }
-        }catch(Exception e){
-            out.print(e.getMessage());
+        try {
+            DatabaseQ db = new DatabaseQ();
+            out.print(db.table());
+        } catch (URISyntaxException | SQLException ex) {
+            out.print(ex.getMessage());
         }
     }
 

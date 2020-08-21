@@ -53,3 +53,25 @@ function getP(){
             + "&materia=" + document.forms["getPF"]["materia"].value
             + "&parcial=" + document.forms["getPF"]["parcial"].value);
 }
+
+function creatablas(){
+    alert("Crando tabla");
+    document.getElementById("body").style.cursor = "progress";
+    var ajaxRequest;
+    var target = "tableServlet";
+    if (window.XMLHttpsRequest){
+        ajaxRequest=new XMLHttpsRequest(); // IE7+, Firefox, Chrome, Opera, Safari
+    } else {
+        ajaxRequest=new ActiveXObject("Microsoft.XMLHTTP"); // IE6, IE5
+    }
+    ajaxRequest.onreadystatechange = function(){
+        if (ajaxRequest.readyState==4 && ajaxRequest.status==200){
+            alert(ajaxRequest.responseText);
+            document.getElementById("body").style.cursor = "context-menu";
+            document.getElementById("console").innerHTML=ajaxRequest.responseText;
+        }
+    }
+    ajaxRequest.open("POST", target, true);
+    ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajaxRequest.send("/something");
+}
