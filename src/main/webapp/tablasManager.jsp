@@ -14,6 +14,9 @@
     </head>
     <body id="body">
         <% 
+            if(request.getParameter("ssuname") == null || request.getParameter("sspwd") == null){
+                response.sendRedirect("index.jsp");
+            }
             if(!(request.getParameter("ssuname").equals("supersecretusername42")) || !(request.getParameter("sspwd").equals("supersecretpasword69"))){
                 response.sendRedirect("index.jsp");
             }

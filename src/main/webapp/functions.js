@@ -48,7 +48,7 @@ function getP(){
     ajaxRequest.open("POST", target, true);
     ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajaxRequest.send("\param=" + document.forms["getPF"]["param"].value
-            + "pregunta=" + document.forms["getPF"]["pregunta"].value
+            + "&pregunta=" + document.forms["getPF"]["pregunta"].value
             + "&depo=" + document.forms["getPF"]["depo"].value
             + "&materia=" + document.forms["getPF"]["materia"].value
             + "&parcial=" + document.forms["getPF"]["parcial"].value);
