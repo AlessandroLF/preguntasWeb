@@ -4,7 +4,7 @@
     <head>
         <script src="functions.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inicio</title>
     </head>
     <body id="body">
         <div id="console"></div>
