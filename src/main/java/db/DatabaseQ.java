@@ -22,7 +22,7 @@ public class DatabaseQ {
     
     public int table() throws SQLException{
         Statement stmt = con.createStatement();
-        return stmt.executeUpdate("CREATE TABLE Preguntas (Pregunta String, Parcial String, Tema String, Materia String, Departamento String, Embed String)");
+        return stmt.executeUpdate("CREATE TABLE Preguntas (Pregunta text PRIMARY KEY, Parcial varchar(50), Tema varchar(50) NOT NULL, Materia varchar(50) NOT NULL, Departamento varchar(50) NOT NULL, Embed text NOT NULL)");
     }
     
     public void close() throws SQLException{
