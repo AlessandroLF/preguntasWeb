@@ -7,21 +7,23 @@ package servlets;
 
 import db.DatabaseQ;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author lomba
  */
-public class tableServlet extends HttpServlet {
+@MultipartConfig
+public class addExServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +37,7 @@ public class tableServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            DatabaseQ db = new DatabaseQ();
-            out.print(db.table());
-        } catch (URISyntaxException | SQLException ex) {
-            out.print(ex.getMessage());
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -70,7 +66,19 @@ public class tableServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Part filePart = request.getPart("exImg");
+        InputStream file = filePart.getInputStream();
+        byte buffer[] = new byte[file.available()];
+        file.read(buffer);
+        try {
+            DatabaseQ db = new DatabaseQ();
+            String d = request.getParameter("descText");
+            int rs = db.saveExamen(buffer, d);
+            db.close();
+            response.sendRedirect("subirPregunta.jsp?examen=" + d + "&resp=" + rs);
+        } catch (URISyntaxException | SQLException ex) {
+            response.sendRedirect("subirExamen.jsp?err=" + ex.getLocalizedMessage());
+        }
     }
 
     /**
