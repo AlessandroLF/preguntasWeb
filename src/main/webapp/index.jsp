@@ -1,38 +1,23 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : index
+    Created on : Aug 24, 2020, 2:58:30 PM
+    Author     : lomba
+--%>
+
+<%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="mahfirststylesheet.css">
         <script src="functions.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Inicio</title>
     </head>
-    <body id="body">
-        <div id="console"></div>
-        <form name="getPF" action="index" method="POST">
-            <table>
-                <tr>
-                    <td>Param</td>
-                    <td><input type="text" name="paran" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Pregunta</td>
-                    <td><textarea name="pregunta" rows="10" cols="20">
-                        </textarea></td>
-                </tr>
-                <tr>
-                    <td>Departamento</td>
-                    <td><input type="text" name="depo" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Materia</td>
-                    <td><input type="text" name="materia" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Parcial</td>
-                    <td><input type="text" name="parcial" value="" /></td>
-                </tr>
-            </table>
-            <input type="button" value="GET" name="addBtn" onClick="getP();" />
-        </form>
+    <body class="wrapper">
+        <div class="lpanel">One</div>
+        <div class="cpanel">
+            <p class="formFrame"></p>
+        </div>
+        <div class="rpanel">Three</div>
     </body>
 </html>

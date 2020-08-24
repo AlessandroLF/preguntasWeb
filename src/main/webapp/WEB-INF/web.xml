@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <display-name>PreguntasWEB</display-name>
     <servlet>
-        <servlet-name>tableServlet</servlet-name>
-        <servlet-class>servlets.tableServlet</servlet-class>
+        <servlet-name>getServlet</servlet-name>
+        <servlet-class>servlets.getServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addServlet</servlet-name>
+        <servlet-class>servlets.addServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addExServlet</servlet-name>
+        <servlet-class>servlets.addExServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>tableServlet</servlet-name>
-        <url-pattern>/tableServlet</url-pattern>
+        <servlet-name>getServlet</servlet-name>
+        <url-pattern>/getServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addServlet</servlet-name>
+        <url-pattern>/addServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addExServlet</servlet-name>
+        <url-pattern>/addExServlet</url-pattern>
     </servlet-mapping>
 </web-app>

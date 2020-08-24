@@ -1,10 +1,11 @@
 package db;
 
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,15 +15,30 @@ import java.sql.Statement;
  */
 public class DatabaseQ {
     
-    private Connection con;
+    private final Connection con;
     
     public DatabaseQ() throws URISyntaxException, SQLException{
         con = getConnection();
     }
     
-    public int table() throws SQLException{
+    public ResultSet getTodas() throws SQLException{
         Statement stmt = con.createStatement();
-        return stmt.executeUpdate("CREATE TABLE Preguntas (Pregunta text PRIMARY KEY, Parcial varchar(50), Tema varchar(50) NOT NULL, Materia varchar(50) NOT NULL, Departamento varchar(50) NOT NULL, Embed text NOT NULL)");
+        return stmt.executeQuery("Select * from preguntas");
+    }
+    
+    public int savePregunta(byte[] pregunta, String examen, char respuesta, int precio, String embed) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("INSERT INTO Preguntas VALUES(?, '" + examen + "', '" + respuesta + "', ?, ?)");
+        stmt.setBytes(1, pregunta);
+        stmt.setInt(2, precio);
+        stmt.setString(3, embed);
+        return stmt.executeUpdate();
+    }
+    
+    public int saveExamen(byte[] examen, String desc) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("INSERT INTO examenes VALUES(?, ?)");
+        stmt.setBytes(1, examen);
+        stmt.setString(2, desc);
+        return stmt.executeUpdate();
     }
     
     public void close() throws SQLException{
@@ -30,13 +46,10 @@ public class DatabaseQ {
     }
     
     private static Connection getConnection() throws URISyntaxException, SQLException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
-
-        return DriverManager.getConnection(dbUrl, username, password);
+        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String uname = System.getenv("JDBC_DATABASE_USERNAME");
+        String pwd = System.getenv("JDBC_DATABASE_PASSWORD");
+        return DriverManager.getConnection(dbUrl, uname, pwd);
     }
     
 }
