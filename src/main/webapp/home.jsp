@@ -2,29 +2,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="mahfirststylesheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="mahfirststylesheet.css?version=avsvsssssscad">
         <script src="functions.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
     </head>
-    <body id="body" style="width: 99%" onload="getP()">
+    <body id="body" class="grid" onload="getP()">
         <div id="console" ></div>
-        <table style="width: 99%" >
-            <tr>
-                <td style="width: 30%">h</td>
-                <td class="bigContainer" >
-                    <table style="width: 99%" >
-                        <tr>
-                            <td style="width: 30%">h</td>
-                            <td>
-                                <div id="examenesView" ></div>
-                            </td>
-                            <td style="width: 30%"></td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="width: 30%">h</td>
-            </tr>
-        </table>
+        <div class="navbarTop">
+            <a href="home.jsp" class="btn logo">QuizAcademy</a>
+            <a class="btn nvbr" href="logIn.jsp">Iniciar Sesión</a>
+        </div>
+        <div class="cpanel">
+            <div class="formFrame">
+                <div id="examenesView"></div>
+            </div>
+        </div>
     </body>
 </html>

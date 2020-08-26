@@ -17,3 +17,15 @@ function getP(){
     ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajaxRequest.send();
 }
+
+function checkpasw(){
+    const a = document.forms["regF"]["pwd"].value;
+    const b = document.forms["regF"]["pwd2"].value;
+    if( a=="" || a != b){
+        document.getElementById("pwdLabel").innerHTML = "(!)";
+        document.forms["regF"]["rBtn"].disabled = true;
+    }else{
+        document.getElementById("pwdLabel").innerHTML = "";
+        document.forms["regF"]["rBtn"].disabled = false;
+    }
+}
