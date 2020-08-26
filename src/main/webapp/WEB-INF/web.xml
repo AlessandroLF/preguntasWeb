@@ -12,6 +12,14 @@
         <servlet-name>addExServlet</servlet-name>
         <servlet-class>servlets.addExServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logInServlet</servlet-name>
+        <servlet-class>servlets.logInServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>signInServlet</servlet-name>
+        <servlet-class>servlets.signInServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>getServlet</servlet-name>
         <url-pattern>/getServlet</url-pattern>
@@ -23,5 +31,13 @@
     <servlet-mapping>
         <servlet-name>addExServlet</servlet-name>
         <url-pattern>/addExServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logInServlet</servlet-name>
+        <url-pattern>/logInServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>signInServlet</servlet-name>
+        <url-pattern>/signInServlet</url-pattern>
     </servlet-mapping>
 </web-app>

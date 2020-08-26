@@ -1,75 +1,138 @@
-* {box-sizing: border-box;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+}
+
+@media (max-width: 768px) {
+    .cpanel{
+        grid-column: 2 / 10 !important;
+    }
+}
+
+@media (max-width: 618px) {
+    .cpanel{
+        grid-column: 1 / 11 !important;
+    }
+}
+
+@media (max-width: 468px) {
+    .formFrame{
+        grid-column: 1 / 11 !important;
+    }
 }
 
 html{
     font-size: 62.5%;
 }
 
-.wrapper {
-  max-width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat( 13, 1fr);
-  grid-gap: .1rem;
-  grid-auto-rows: minmax(70px, auto);
-}
-
-.wrapper > div {
-  border: 2px solid rgb(233,171,88);
-  border-radius: 5px;
-  padding: 1rem;
-  color: #d9480f;
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    grid-gap: .1rem;
+    grid-auto-rows: minmax(60px, auto);
+    z-index: 10;
 }
 
 .formFrame{
-    width: 100%;
-    height: 65rem;
+    padding: 1rem;
+    grid-column: 2 / 10;
+    grid-row: 2 / 8;
     border-style: groove;
     border-radius: .7rem;
     background: beige;
-    margin-top: 1.5rem;
-    
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 10vh;
 }
 
-.lpanel{
-    height: 700px;
-    
-    width: 30%;
-    position: fixed;
-    top: 0;
-    left: 0;
+.formFrame > table{
+    padding: .2rem;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 99%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    min-height: 30rem;
+    overflow: auto;
+    font-size: 2rem;
 }
 
-.rpanel{
-    height: 700px;
-    width: 30%;
-    position: fixed;
-    top: 0;
-    right: 0;
+input{
+    font-size: 2.2rem;
+    border-style: groove;
+    border-radius: .5rem;
+    margin: .1rem;
+    padding: .2rem;
+}
+
+.navbarTop{
+    margin: 0;
+    grid-column: 1 / 11 ;
+    grid-row: 1;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    background: darkslategrey;
+    z-index: 20;
 }
 
 .cpanel{
-    grid-column: 5 /10;
-    
+    grid-row: 2 / 9;
+    grid-column: 3 / 9;
+    border: .2rem solid rgb(233,171,88);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    grid-gap: .1rem;
+    grid-auto-rows: minmax(60px, auto);
+    overflow: auto;
+    z-index: 12;
 }
 
 .btn{
+    max-height: 90%;
+    margin: auto;
+    padding: 1rem;
+    display: block;
     cursor: pointer;
+    border: rgb(7, 13, 94);
+    border: .2rem;
+    border-style: groove;
+    border-radius: .4rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2.6vh;
 }
 
-.frame{
-    width: 100%;
-    padding: 10px;
-    border-style: groove;
-    display: block;
-    justify-content: center;
-    align-self: center;
-    text-align: left;
-    font-size: 15px;
-    border: 3px solid darkslategray;
-    margin: 10px;
+.btn.nvbr{
+    grid-column: 10;
+    background-color: rgb(33, 59, 59);
+    z-index: 21;
+    text-decoration: none;
+    color: darkturquoise ;
+}
+
+.btn.logo{
+    grid-column: 1;
+    z-index: 21;
+    text-decoration: none;
+    color: darkturquoise ;
+    border: none;
+}
+
+.btn.btmNv{
+    grid-column: 10;
+    grid-row: 15;
 }
 
 .bigContainer{

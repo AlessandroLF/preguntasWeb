@@ -21,6 +21,16 @@ public class DatabaseQ {
         con = getConnection();
     }
     
+    public int addUsr(String mail, String pasw) throws SQLException{
+        Statement st = con.createStatement();
+        return st.executeUpdate("insert into ususarios values('" + mail + "','" + pasw.hashCode() + "',15, 'usr')");
+    }
+    
+    public ResultSet getUsr(String mail) throws SQLException{
+        Statement st = con.createStatement();
+        return st.executeQuery("select * from usuarios where correo = '" + mail + "'");
+    }
+    
     public ResultSet getTodas() throws SQLException{
         Statement stmt = con.createStatement();
         return stmt.executeQuery("Select * from preguntas");
